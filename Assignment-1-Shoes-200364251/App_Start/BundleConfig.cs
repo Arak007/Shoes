@@ -23,7 +23,7 @@ namespace Assignment_1_Shoes_200364251
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-minty.css",
                       "~/Content/site.css"));
         }
     }
