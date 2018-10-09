@@ -14,15 +14,15 @@ namespace Assignment_1_Shoes_200364251.Models
         public int moId { get; set; }
 
         [StringLength(150)]
-        [Display(Name = "Collection Name")]
+        [Display(Name = "Model Name")]
         public string moName { get; set; }
 
         [StringLength(200)]
-        [Display(Name = "Collection Desription")]
+        [Display(Name = "Model Desription")]
         public string moDesc { get; set; }
 
         [StringLength(100)]
-        [Display(Name = "Collection Colors")]
+        [Display(Name = "Colors Available")]
         public string moColours { get; set; }
 
         public int brandId { get; set; }
