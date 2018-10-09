@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Assignment_1_Shoes_200364251.Models.type>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Collections</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.brand.brName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.moColours)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.brand.brName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moColours)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.moId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.moId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.moId })
+        </td>
+    </tr>
+}
+
+</table>

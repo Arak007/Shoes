@@ -1,0 +1,51 @@
+﻿@model Assignment_1_Shoes_200364251.Models.type
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>type</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.brand.brName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brand.brName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moColours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moColours)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.moId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

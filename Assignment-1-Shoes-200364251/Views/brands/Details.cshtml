@@ -1,0 +1,43 @@
+﻿@model Assignment_1_Shoes_200364251.Models.brand
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>brand</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.brName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brFounder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brFounder)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.brandId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
