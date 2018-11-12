@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Assignment_1_Shoes_200364251.Models;
+using System.Configuration;
 
 namespace Assignment_1_Shoes_200364251
 {
@@ -46,9 +47,9 @@ namespace Assignment_1_Shoes_200364251
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: ConfigurationManager.AppSettings["MicrosoftClientId"],
+                clientSecret: ConfigurationManager.AppSettings["MicrosoftClientSecret"]);
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
@@ -60,8 +61,8 @@ namespace Assignment_1_Shoes_200364251
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "71677877135-acgjri5e0p7m88sga5cfmvjdeiqickte.apps.googleusercontent.com",
-                ClientSecret = "WCVPLTke6pq3sG5buf2gXfV0"
+                ClientId = ConfigurationManager.AppSettings["GoogleClientId"] ,
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
             });
         }
     }
