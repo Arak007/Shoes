@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -58,11 +58,11 @@ namespace Assignment_1_Shoes_200364251
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "71677877135-acgjri5e0p7m88sga5cfmvjdeiqickte.apps.googleusercontent.com",
+                ClientSecret = "WCVPLTke6pq3sG5buf2gXfV0"
+            });
         }
     }
 }

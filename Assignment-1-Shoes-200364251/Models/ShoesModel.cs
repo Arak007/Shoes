@@ -5,6 +5,7 @@ namespace Assignment_1_Shoes_200364251.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
+    
     public partial class ShoesModel : DbContext
     {
         public ShoesModel()
@@ -15,6 +16,7 @@ namespace Assignment_1_Shoes_200364251.Models
         public virtual DbSet<brand> brands { get; set; }
         public virtual DbSet<type> types { get; set; }
 
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<brand>()
