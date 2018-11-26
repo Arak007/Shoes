@@ -12,12 +12,23 @@ namespace Assignment_1_Shoes_200364251.Controllers
 {
     public class brandsController : Controller
     {
-        private ShoesModel db = new ShoesModel();
+        private IbrandsMock db;
+        
+        public brandsController()
+        {
+            this.db = new EFBrands();
+        }
+
+        public brandsController(IbrandsMock brandsMock)
+        {
+            this.db = brandsMock; 
+        }
 
         // GET: brands
         public ActionResult Index()
         {
-            return View(db.brands.ToList());
+            //return View(db.brands.ToList());
+            return View(); 
         }
 
         // GET: brands/Details/5
