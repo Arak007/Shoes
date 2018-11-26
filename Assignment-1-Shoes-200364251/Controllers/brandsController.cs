@@ -13,22 +13,24 @@ namespace Assignment_1_Shoes_200364251.Controllers
     public class brandsController : Controller
     {
         private IbrandsMock db;
-        
+
         public brandsController()
         {
+            //Default option that connects to DataBase
             this.db = new EFBrands();
         }
 
-        public brandsController(IbrandsMock brandsMock)
+        public brandsController(IbrandsMock ibrandsMock)
         {
-            this.db = brandsMock; 
+            this.db = ibrandsMock; 
         }
 
         // GET: brands
         public ActionResult Index()
         {
-            //return View(db.brands.ToList());
-            return View(); 
+
+            var brands = db.Brands.OrderBy(a => a.brName).ThenBy(a => a.brFounder);
+            return View("Index", brands); 
         }
 
         // GET: brands/Details/5

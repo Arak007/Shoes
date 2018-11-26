@@ -11,18 +11,31 @@ namespace Assignment_1_Shoes_200364251.Models
         //db connection
 
         private ShoesModel db = new ShoesModel();
-        public ShoesModel Db { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public IQueryable<brand> Brands => throw new NotImplementedException();
+        public IQueryable<brand> Brands { get {return db.brands; } }
 
+        
         public void Delete(brand brand)
         {
-            throw new NotImplementedException();
+            db.brands.Remove(brand);
+            db.SaveChanges();
         }
-
+         
         public brand Save(brand brand)
         {
-            throw new NotImplementedException();
+            if (brand.brandId == 0)
+            {
+                db.brands.Add(brand);
+            
+            }
+
+            else
+            {
+                db.Entry(brand).State = System.Data.Entity.EntityState.Modified;
+            }
+
+            db.SaveChanges();
+            return brand;
         }
     }
 }

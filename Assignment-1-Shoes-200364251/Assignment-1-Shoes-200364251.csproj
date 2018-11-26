@@ -206,7 +206,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\brand.cs" />
+    <Compile Include="Models\EFBrands.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IbrandsMock.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ShoesModel.cs" />
     <Compile Include="Models\type.cs" />
