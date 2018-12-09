@@ -5,6 +5,7 @@ namespace Assignment_1_Shoes_200364251.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     public partial class brand
     {
@@ -31,5 +32,10 @@ namespace Assignment_1_Shoes_200364251.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<type> types { get; set; }
+
+        public static explicit operator brand(ViewResult v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

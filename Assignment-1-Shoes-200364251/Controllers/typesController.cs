@@ -17,8 +17,8 @@ namespace Assignment_1_Shoes_200364251.Controllers
         // GET: types
         public ActionResult Index()
         {
-            var types = db.types.Include(t => t.brand);
-            return View(types.OrderBy(a => a.moName).ToList());
+            var types = db.types.Include(q => q.brand);
+            return View(types.OrderBy(a => a.brand.brName).ThenBy(a => a.moName).ToList());
         }
 
         // GET: types/Details/5

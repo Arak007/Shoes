@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Assignment_1_Shoes_200364251.Models
 {
-    public class EFBrands : IbrandsMock
+    public class EFBrands : IBrandsMock
     {
 
         //db connection
@@ -15,6 +15,7 @@ namespace Assignment_1_Shoes_200364251.Models
         public IQueryable<brand> Brands { get {return db.brands; } }
 
         
+
         public void Delete(brand brand)
         {
             db.brands.Remove(brand);

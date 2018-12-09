@@ -12,7 +12,7 @@ namespace Assignment_1_Shoes_200364251.Controllers
 {
     public class brandsController : Controller
     {
-        private IbrandsMock db;
+        private IBrandsMock db;
 
         public brandsController()
         {
@@ -20,7 +20,7 @@ namespace Assignment_1_Shoes_200364251.Controllers
             this.db = new EFBrands();
         }
 
-        public brandsController(IbrandsMock ibrandsMock)
+        public brandsController(IBrandsMock ibrandsMock)
         {
             this.db = ibrandsMock; 
         }
@@ -29,7 +29,7 @@ namespace Assignment_1_Shoes_200364251.Controllers
         public ActionResult Index()
         {
 
-            var brands = db.Brands.OrderBy(a => a.brName).ThenBy(a => a.brFounder);
+            var brands = db.Brands.OrderBy(b => b.brName).ThenBy(b => b.brFounder);
             return View("Index", brands); 
         }
 
@@ -38,14 +38,18 @@ namespace Assignment_1_Shoes_200364251.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Error");
             }
-            brand brand = db.brands.Find(id);
+            //brand brand = db.brands.Find(id);
+
+            brand brand = db.Brands.SingleOrDefault(a => a.brandId == id);
+
             if (brand == null)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return View("Error");
             }
-            return View(brand);
+            return View("Details",brand);
         }
 
         // GET: brands/Create
@@ -63,8 +67,9 @@ namespace Assignment_1_Shoes_200364251.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.brands.Add(brand);
-                db.SaveChanges();
+                //db.brands.Add(brand);
+                //db.SaveChanges();
+                db.Save(brand);
                 return RedirectToAction("Index");
             }
 
@@ -78,7 +83,8 @@ namespace Assignment_1_Shoes_200364251.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            brand brand = db.brands.Find(id);
+            //brand brand = db.brands.Find(id);
+            brand brand = db.Brands.SingleOrDefault(a => a.brandId == id);
             if (brand == null)
             {
                 return HttpNotFound();
@@ -95,8 +101,9 @@ namespace Assignment_1_Shoes_200364251.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(brand).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(brand).State = EntityState.Modified;
+                //db.SaveChanges();
+                db.Save(brand);
                 return RedirectToAction("Index");
             }
             return View(brand);
@@ -109,7 +116,8 @@ namespace Assignment_1_Shoes_200364251.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            brand brand = db.brands.Find(id);
+            //brand brand = db.brands.Find(id);
+            brand brand = db.Brands.SingleOrDefault(a => a.brandId == id);
             if (brand == null)
             {
                 return HttpNotFound();
@@ -122,19 +130,32 @@ namespace Assignment_1_Shoes_200364251.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            brand brand = db.brands.Find(id);
-            db.brands.Remove(brand);
-            db.SaveChanges();
+            if (id.Equals(null))
+            {
+                return View("Error");
+            }
+            //brand brand = db.brands.Find(id);
+            brand brand = db.Brands.SingleOrDefault(a => a.brandId == id);
+
+            if (brand == null)
+            {
+                return View("Error");
+            }
+           
+            //brand brand = db.brands.Find(id);
+            //db.brands.Remove(brand);
+            db.Delete(brand);
+
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

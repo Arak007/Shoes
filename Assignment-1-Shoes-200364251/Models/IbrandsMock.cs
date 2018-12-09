@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_1_Shoes_200364251.Models
 {
-    public interface IbrandsMock
+    public interface IBrandsMock
     {
         
 
